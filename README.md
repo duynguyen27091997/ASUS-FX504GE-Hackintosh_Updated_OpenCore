@@ -139,5 +139,3 @@ This is where you put SMBIOS data, make sure you provide the following:
 2. `ProvideConsoleGop` enabled
 3. `RequestBootVarRouting` enabled
 4. `SanitiseClearScreen` enabled
-
-![Screenshot](FX504GE-SS-OC.png?raw=true)
