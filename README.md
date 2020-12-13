@@ -1,7 +1,14 @@
 # OpenCore notes
 Configurations here are considered experimental. Use at your own risk.
 
-Tested version: 0.5.4
+Tested version: 0.6.4
+
+
+
+# IGNORE FOR NOW, THIS NEEDS AN UPDATE!!!!!!
+      |
+      |
+     \|/
 
 # Configurations
 
