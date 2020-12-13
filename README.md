@@ -19,7 +19,7 @@ Necessary configurations and instructions to get [ASUS TUF FX504GE laptop](https
 2. SATA mode: AHCI
 3. DVMT-Preallocated: 64MB
 
-## Guide for Clover users (DISCONTINUED)
+## Guide for Clover users (Outdated)
 
 [Here](Clover/README.md)
 
