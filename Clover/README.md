@@ -1,3 +1,5 @@
+##Not tested by me...
+
 # Clover notes
 1. Clover bootloader r4954+ for macOS Catalina (10.15)
 2. For Clover v2.5k, **the new UEFI drivers directory is now** `/EFI/CLOVER/drivers/UEFI`, make sure you move every UEFI driver from the old (Clover v2.4k) directory (`/EFI/CLOVER/drivers64UEFI`) to this directory after you upgraded Clover, **except for HFSPlus-64.efi** as there has been a new version of it that works with Clover v2.5k and should come pre-installed by default by the Clover v2.5k installer.
