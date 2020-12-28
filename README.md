@@ -1,6 +1,3 @@
-# OpenCore notes
-Configurations here are considered experimental. Use at your own risk.
-
 Tested version: 0.6.4
 
 ## Asus FX504GE Hardware
@@ -17,17 +14,19 @@ Tested version: 0.6.4
 
 ## Working
 - [x] **Tested with macOS Mojave 10.14.4, Catalina 10.15.6 and Big Sur 11.1**
-- [x] **Wifi/Bluetooth:** (via itlwm.kext). Replacing the onboard Intel WiFi-card doesn't work. See details below.
-- [x] **Audio:** Realtek ALC255 (via AppleALC.kext, layout-id=3)
-- [x] **USB:** All ports.
-- [x] **Ethernet:** (Realtek RTL8111)
-- [x] **Sleep/Wake:** (ON PROCESS)
-- [x] **Shutdown:** (ON PROCESS)
-- [x] **Restart:** (ON PROCESS)
+- [x] **Wifi/Bluetooth:** (Thanks to itlwm.kext)
+- [x] **Audio:** Realtek ALC255 (Thanks to AppleALC.kext with layout-id=3 setted in Device Properties)
+- [x] **USB:** All internal and external ports (Thanks to SSDT-EC-USBX-LAPTOP.aml)
+- [x] **Ethernet:** Realtek RTL8111 (Thanks to RealtekRTL8111.kext
+- [x] **Trackpad:** (Working thanks to VoodooI2C.kext, VoodooI2CHID.kext and SSDT-XOSI.aml)
+
+- [] **Sleep/Wake:** (ON PROCESS)
+- [] **Shutdown:** (ON PROCESS)
+- [] **Restart:** (ON PROCESS)
 
 ## Not working
-- dGPU (Maybe Works with **Nvidia Web Drivers** on High Sierra and Bellow)
-- HDMI, i can't find a way to meke it work...
+- dGPU (Any support in Mojave and up)
+- HDMI, i can't find a way to make it work...
 
 
 
