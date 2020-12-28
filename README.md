@@ -3,31 +3,48 @@ Configurations here are considered experimental. Use at your own risk.
 
 Tested version: 0.6.4
 
+## Asus FX504GE Hardware
+- **CPU:** Intel i7-8750H
+- **Motherboard:** FX504GE HM370:
+                  - **Audio:** Realtek ALC255
+                  - **Ethernet:** Realtek RTL 8111
+                  - **Trackpad:** ELAN1200 Precision TouchPad
+                  - **Keyboard:** Standard PS/2 Keyboard
+- **RAM:** 16GB SK Hyinix HMA82GS6CJR8N-VK 2666Mhz CL16
+- **iGPU:** Intel UHD Graphics 630
+- **dGPU:** NVIDIA GeForce GTX 1050 Ti (DISABLED)
+- **Wifi/BT:** Intel(R) Wireless-AC 9560 160MHz (Type CNVi)
+
+## Working
+- [x] **Tested with macOS Mojave 10.14.4, Catalina 10.15.6 and Big Sur 11.1**
+- [x] **Wifi/Bluetooth:** (via itlwm.kext). Replacing the onboard Intel WiFi-card doesn't work. See details below.
+- [x] **Audio:** Realtek ALC255 (via AppleALC.kext, layout-id=3)
+- [x] **USB:** All ports.
+- [x] **Ethernet:** (Realtek RTL8111)
+- [x] **Sleep/Wake:** (ON PROCESS)
+- [x] **Shutdown:** (ON PROCESS)
+- [x] **Restart:** (ON PROCESS)
+
+## Not working
+- dGPU (Maybe Works with **Nvidia Web Drivers** on High Sierra and Bellow)
+- HDMI, i can't find a way to meke it work...
 
 
-# IGNORE FOR NOW, THIS NEEDS AN UPDATE!!!!!!
-      |
-      |
-     \|/
+
 
 # Configurations
 
 ## ACPI
 ### Add
-1. `DSDT.aml` (Patched one)
-2. `SSDT-DDGPU.aml` (Disable discrete graphics card)
-3. `SSDT-PLUG.aml` (Alternative for Clover's `PluginType`)
-4. `SSDT-PNLF.aml` (Backlight support)
-5. `SSDT-PNLFCFL.aml` (Backlight support for Coffee Lake machines)
-6. `SSDT-EC.aml` (Override AppleBusPowerController profile for Catalina beta 5)
-7. `SSDT-UIAC.aml` (Disable unused USB ports)
-8. `SSDT-XOSI.aml` (TBD)
-9. `SSDT-XHC.aml` (USB3)
+1. `SSDT-EC-USBX-LAPTOP.aml` (Fix the embedded controller and USB power)
+2. `SSDT-PLUG.aml` (Allows for native CPU power management)
+3. `SSDT-PNLF-CFL.aml` (Backlight support for Coffee Lake machines)
+4. `SSDT-UIAC.aml` (Disable unused USB ports)
+5. `SSDT'PMC` (Enable Native NVRAM for x300 series MotherBoards (**ours is HM370**))
+5. `SSDT-XOSI.aml` (This is for Windows Features and better Trackpad performance)
 
 ### Patch
-1. `Rename EC0 to EC` (Really need it?)
-2. `Rename _OSI to XOSI`
-3. `Rename HDAS to HDEF` (Audio)
+1. `Rename _OSI to XOSI`
 
 ### Quirks
 All `NO`.
