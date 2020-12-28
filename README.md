@@ -3,10 +3,10 @@ Tested version: 0.6.4
 ## Asus FX504GE Hardware
 - **CPU:** Intel i7-8750H
 - **Motherboard:** FX504GE HM370:
-                  - **Audio:** Realtek ALC255
-                  - **Ethernet:** Realtek RTL 8111
-                  - **Trackpad:** ELAN1200 Precision TouchPad
-                  - **Keyboard:** Standard PS/2 Keyboard
+  - **Audio:** Realtek ALC255
+  - **Ethernet:** Realtek RTL 8111
+  - **Trackpad:** ELAN1200 Precision TouchPad
+  - **Keyboard:** Standard PS/2 Keyboard
 - **RAM:** 16GB SK Hyinix HMA82GS6CJR8N-VK 2666Mhz CL16
 - **iGPU:** Intel UHD Graphics 630
 - **dGPU:** NVIDIA GeForce GTX 1050 Ti (DISABLED)
