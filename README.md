@@ -49,7 +49,7 @@ Tested version: 0.6.4
 
 ### From Windows:
 
-![**Dortania's Guide**](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html)
+[**Dortania's Guide**](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html)
 
 
 
