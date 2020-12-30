@@ -1,6 +1,6 @@
 Tested version: 0.6.4
 
-## Asus FX504GE Hardware
+### Asus FX504GE Hardware
 - **CPU:** Intel i7-8750H
 - **Motherboard:** FX504GE HM370:
   - **Audio:** Realtek ALC255
@@ -12,7 +12,7 @@ Tested version: 0.6.4
 - **dGPU:** NVIDIA GeForce GTX 1050 Ti (DISABLED)
 - **Wifi/BT:** Intel(R) Wireless-AC 9560 160MHz (Type CNVi)
 
-## Working
+### Working
 - [x] **Tested with macOS Mojave 10.14.4, Catalina 10.15.6 and Big Sur 11.1**
 - [x] **Wifi/Bluetooth:** (Thanks to itlwm.kext)
 - [x] **Audio:** Realtek ALC255 (Thanks to AppleALC.kext with layout-id=3 setted in Device Properties)
@@ -23,9 +23,33 @@ Tested version: 0.6.4
 - [x] **Restart:**
 - [] **Sleep/Wake:** (ON PROCESS)
 
-## Not working
+### Not working
 - dGPU (Any support in Mojave and up)
 - HDMI, i can't find a way to make it work...
+
+
+
+# INSTALLATION GUIDE
+
+## Creating Booteable USB
+
+### From macOS:
+![*Installation Guide Apple Page*](https://support.apple.com/en-us/HT201372)
+
+**Download installers:** ![Big Sur](https://itunes.apple.com/us/app/macos-big-sur/id1526878132) ![Catalina](https://itunes.apple.com/us/app/macos-catalina/id1466841314) ![Mojave](https://itunes.apple.com/us/app/macos-mojave/id1398502828) ![High Sierra](https://itunes.apple.com/us/app/macos-high-sierra/id1246284741)
+
+1. Connect a <=16 GB pendrive.
+2. Open *Disk Utility* and Erase the USB with the name: *MyVolume*.
+3. Open *Terminal* and use the proper commands for your macOS installer:
+- Big Sur: `sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`
+- Catalina: `sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`
+- Mojave: `sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`
+- High Sierra: `sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`
+
+
+### From Windows:
+
+![**Dortania's Guide**](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html)
 
 
 
@@ -38,7 +62,7 @@ Tested version: 0.6.4
 2. `SSDT-PLUG.aml` (Allows for native CPU power management)
 3. `SSDT-PNLF-CFL.aml` (Backlight support for Coffee Lake machines)
 4. `SSDT-UIAC.aml` (Disable unused USB ports)
-5. `SSDT'PMC` (Enable Native NVRAM for x300 series MotherBoards (**ours is HM370**))
+5. `SSDT-PMC` (Enable Native NVRAM for x300 series MotherBoards (**ours is HM370**))
 5. `SSDT-XOSI.aml` (This is for Windows Features and better Trackpad performance)
 
 ### Patch
