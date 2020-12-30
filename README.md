@@ -36,7 +36,7 @@ Tested version: 0.6.4
 ### From macOS:
 [*Installation Guide Apple Page*](https://support.apple.com/en-us/HT201372)
 
-**Download installers:** [Big Sur](https://itunes.apple.com/us/app/macos-big-sur/id1526878132) [Catalina](https://itunes.apple.com/us/app/macos-catalina/id1466841314) [Mojave](https://itunes.apple.com/us/app/macos-mojave/id1398502828) [High Sierra](https://itunes.apple.com/us/app/macos-high-sierra/id1246284741)
+**Download installers:** [Big Sur](https://itunes.apple.com/us/app/macos-big-sur/id1526878132) - [Catalina](https://itunes.apple.com/us/app/macos-catalina/id1466841314) - [Mojave](https://itunes.apple.com/us/app/macos-mojave/id1398502828) - [High Sierra](https://itunes.apple.com/us/app/macos-high-sierra/id1246284741)
 
 1. Connect a <=16 GB pendrive.
 2. Open *Disk Utility* and Erase the USB with the name: *MyVolume*.
