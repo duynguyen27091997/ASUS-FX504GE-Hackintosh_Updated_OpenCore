@@ -1,16 +1,20 @@
 Tested version: 0.6.4
 
-### Asus FX504GE Hardware
-- **CPU:** Intel i7-8750H
-- **Motherboard:** FX504GE HM370:
-  - **Audio:** Realtek ALC255
-  - **Ethernet:** Realtek RTL 8111
-  - **Trackpad:** ELAN1200 Precision TouchPad
-  - **Keyboard:** Standard PS/2 Keyboard
-- **RAM:** 16GB SK Hyinix HMA82GS6CJR8N-VK 2666Mhz CL16
-- **iGPU:** Intel UHD Graphics 630
-- **dGPU:** NVIDIA GeForce GTX 1050 Ti (DISABLED)
-- **Wifi/BT:** Intel(R) Wireless-AC 9560 160MHz (Type CNVi)
+## Specs:
+| Component | Name |
+|:--- |:---:|
+| Motherboard:  | FX504GE **HM370** |
+| CPU: | Intel i7-8750H |
+| RAM: | 16GB **SK Hyinix** HMA82GS6CJR8N-VK 2666Mhz |
+| iGPU: | Intel UHD 630 (Mobile) |
+| dGPU: | NVIDIA GeForce GTX 1050 Ti (DISABLED) |
+| Wifi/BT: | Intel(R) Wireless-AC 9560 160MHz (Type CNVi) |
+| Audio: | Realtek ALC255 |
+| Ethernet: | Realtek RTL8111 |
+| Trackpad: | ELAN1200 Precision TouchPad (HID Type) |
+| Keyboard: | Standard PS/2 Keyboard |
+
+[Amazon Page](https://www.amazon.es/dp/B07D4W2CY6/ref=cm_sw_em_r_mt_dp_gUF8FbYQW48NV) 1.199€ *purchased 18/09/2018*
 
 ### Working
 - [x] **Tested with macOS Mojave 10.14.4, Catalina 10.15.6 and Big Sur 11.1**
@@ -65,9 +69,14 @@ Tested version: 0.6.4
 5. `SSDT-XOSI.aml` (This is for Trackpad ELAN HID)
 5. `SSDT-dGPU-Off.aml` (PowerOff GTX 1050Ti)
 
+### Delete
+Not needed in this build
+
 ### Patch
 1. `Rename _OSI to XOSI`
 
+### Quirks
+Not needed in this build
 
 ## Booter
 ### Quirks
