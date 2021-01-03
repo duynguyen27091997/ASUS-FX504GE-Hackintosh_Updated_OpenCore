@@ -21,7 +21,7 @@ Tested version: 0.6.4
 - [x] **Trackpad:** (Working thanks to VoodooI2C.kext, VoodooI2CHID.kext and SSDT-XOSI.aml)
 - [x] **Shutdown:**
 - [x] **Restart:**
-- [] **Sleep/Wake:** (ON PROCESS)
+- [x] **Sleep/Wake:** (ON PROCESS)
 
 ### Not working
 - dGPU (Any support in Mojave and up)
@@ -58,38 +58,42 @@ Tested version: 0.6.4
 
 ## ACPI
 ### Add
-1. `SSDT-EC-USBX-LAPTOP.aml` (Fix the embedded controller and USB power)
+1. `SSDT-EC-USBX.aml` (Fix the embedded controller and USB power)
 2. `SSDT-PLUG.aml` (Allows for native CPU power management)
 3. `SSDT-PNLF-CFL.aml` (Backlight support for Coffee Lake machines)
-4. `SSDT-UIAC.aml` (Disable unused USB ports)
-5. `SSDT-PMC` (Enable Native NVRAM for x300 series MotherBoards (**ours is HM370**))
-5. `SSDT-XOSI.aml` (This is for Windows Features and better Trackpad performance)
+4. `SSDT-PMC` (Enable Native NVRAM for HM370 MotherBoard)
+5. `SSDT-XOSI.aml` (This is for Trackpad ELAN HID)
+5. `SSDT-dGPU-Off.aml` (PowerOff GTX 1050Ti)
 
 ### Patch
 1. `Rename _OSI to XOSI`
 
-### Quirks
-All `NO`.
 
 ## Booter
 ### Quirks
 Enabled:
 1. `AvoidRuntimeDefrag`
-2. `DevirtualiseMmio`
-3. `DisableVariableWrite` (NVRAM)
-4. `SetupVirtualMap`
-5. `ShrinkMemoryMap`
+2. `EnableSafeModeSlide`
+3. `ProvideCustomSlide`
+4. `RebuildAppleMemoryMap`
+5. `SetupVirtualMap`
+6. `SyncRuntimePermissions`
+
 
 ## DeviceProperties
 ### Add
-Only the important configurations are shown here:
-1. `PciRoot(0x0)/Pci(0x1f,0x3)` (Audio - ALC255)
-   1. `layout-id` as `0x03000000` (which is 3)
-2. `PciRoot(0x0)/Pci(0x2,0x0)` (Graphics - Intel UHD 630)
-   1. `AAPL,ig-platform-id` as `0x00009b3e` (which is 0x3E9B0000)
-   2. `device-id` as `0x9b3e0000` (which is 0x00003E9B)
-   3. `disable-external-gpu` as `0x01000000` (which is 1, disabling discrete graphics card)
-   4. `framebuffer-unifiedmem` as `0x00000080`, `framebuffer-stolenmem` as `0x00003001` and `framebuffer-fbmem` as `0x00009000` (increase VRAM from 1536 MB to 2048 MB)
+1. `PciRoot(0x0)/Pci(0x2,0x0)` (Graphics - Intel UHD 630 (Mobile))
+   1. `AAPL,ig-platform-id` `DATA` `00009B3E` (iGPU real id)
+   2. `device-id` `DATA` `9B3E0000` (Fake id)
+   3. `AAPL,slot-name` `String` `Internal@0,2,0` (Internal iGPU Indentifier)
+   4. `enable-hdmi20` `DATA` `01000000` (Enable 4K monitors and HDR content)
+   5. `framebuffer-unifiedmem` `DATA` `00000080` (Increase VRAM from 1536 MB to 2048 MB)
+   6. `framebuffer-patch-enable` `DATA` `01000000` (Enable framebuffer patches)
+   7. `model` `String` `Intel UHD 630` (Name Showed in *About This Mac*)
+   
+2. `PciRoot(0x0)/Pci(0x1f,0x3)` (Audio - ALC255)
+   1. `layout-id` `DATA` `01000000` (which is 3)
+
 
 ## Kernel
 ### Add
