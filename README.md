@@ -98,7 +98,15 @@ Enabled:
 | AAPL,slot-name | String | Internal@0,2,0 |
 | enable-hdmi20 | DATA | 01000000 |
 | framebuffer-unifiedmem | DATA | 00000080 |
-| framebuffer-patch-enable | DATA | 01000000 |
+| framebuffer-con1-busid | DATA | 01000000 |
+| framebuffer-con1-enable | DATA | 01000000 |
+| framebuffer-con1-flags | DATA | 87010000 |
+| framebuffer-con1-has-lspcon | DATA | 01000000 |
+| framebuffer-con1-index | DATA | 01000000 |
+| framebuffer-con1-pipe | DATA | 12000000 |
+| framebuffer-con1-preferred-lspcon-mode | DATA | 01000000 |
+| framebuffer-unifiedmem | DATA | 00000080 |
+| framebuffer-con1-type | DATA | 00080000 |
 | model | String | Intel UHD 630 |
 
 | PciRoot(0x0)/Pci(0x1f,0x3) | Dictionary | Keys / Values |
@@ -120,23 +128,19 @@ Not needed
 
 ## Kernel
 ### Add
-Orders matter. Think about which kexts should load before which.
-1. **Lilu** (First of all)
-2. **VirtualSMC** (Second always)
-3. **CPUFriend** (CPU power management)
-4. **CPUFriendDataProvider** (CPU power management profile)
-5. SMCProcessor
-6. SMCSuperIO (maybe not)
-7. SMCLightSensor (maybe not)
-8. **SMCBatteryManager**
-9. **WhateverGreen** (Graphics)
-10. **AppleALC** (Audio)
-11. NoTouchID
-12. **VoodooPS2Controller** (PS/2 keyboard) (Must also be installed at `/Library/Extensions`)
-13. **USBInjectAll** (USB ports, built-in webcam)
-14. RealtekRTL8111 (LAN internet)
-15. **XHCI-unsupported** (USB3)
-16. SATA-300-series-unsupported (SATA drives)
+**ORDER MATTER!** Think about which kexts should load before which.
+1. [Lilu](https://github.com/acidanthera/lilu/releases) (Essential)
+2. [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) (Second always)
+   - SMCProcessor
+   - SMCSuperIO
+   - SMCLightSensor (maybe not)
+   - SMCBatteryManager
+3. [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases) (Graphics)
+4. [AppleALC](https://github.com/acidanthera/AppleALC/releases) (Audio)
+5. [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases) (Trackpad Support)
+   - VoodooI2CHID
+6. [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2/releases) (PS/2 keyboard)
+7. [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) (LAN internet)
 
 ### Quirks
 1. `AppleCpuPmCfgLock` enabled (maybe not)
