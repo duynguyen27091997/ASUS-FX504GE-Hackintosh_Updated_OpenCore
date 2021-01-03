@@ -58,7 +58,7 @@ Tested version: 0.6.4
 
 
 
-# Configurations
+# OPENCORE Config.plist
 
 ## ACPI
 ### Add
@@ -70,7 +70,7 @@ Tested version: 0.6.4
 5. `SSDT-dGPU-Off.aml` (PowerOff GTX 1050Ti)
 
 ### Delete
-Not needed in this build
+Not needed
 
 ### Patch
 1. `Rename _OSI to XOSI`
@@ -91,18 +91,32 @@ Enabled:
 
 ## DeviceProperties
 ### Add
-1. `PciRoot(0x0)/Pci(0x2,0x0)` (Graphics - Intel UHD 630 (Mobile))
-   1. `AAPL,ig-platform-id` `DATA` `00009B3E` (iGPU real id)
-   2. `device-id` `DATA` `9B3E0000` (Fake id)
-   3. `AAPL,slot-name` `String` `Internal@0,2,0` (Internal iGPU Indentifier)
-   4. `enable-hdmi20` `DATA` `01000000` (Enable 4K monitors and HDR content)
-   5. `framebuffer-unifiedmem` `DATA` `00000080` (Increase VRAM from 1536 MB to 2048 MB)
-   6. `framebuffer-patch-enable` `DATA` `01000000` (Enable framebuffer patches)
-   7. `model` `String` `Intel UHD 630` (Name Showed in *About This Mac*)
-   
-2. `PciRoot(0x0)/Pci(0x1f,0x3)` (Audio - ALC255)
-   1. `layout-id` `DATA` `01000000` (which is 3)
+| PciRoot(0x0)/Pci(0x2,0x0) | Dictionary | Keys / Values |
+|:--- |:---:|:--- |
+| AAPL,ig-platform-id  | DATA | 00009B3E |
+| device-id | DATA | 9B3E0000 |
+| AAPL,slot-name | String | Internal@0,2,0 |
+| enable-hdmi20 | DATA | 01000000 |
+| framebuffer-unifiedmem | DATA | 00000080 |
+| framebuffer-patch-enable | DATA | 01000000 |
+| model | String | Intel UHD 630 |
 
+| PciRoot(0x0)/Pci(0x1f,0x3) | Dictionary | Keys / Values |
+|:--- |:---:|:--- |
+| layout-id  | DATA | 01000000 |
+
+**What does each thing:**
+- `AAPL,ig-platform-id` (iGPU Real id)
+- `device-id` (Fake id)
+- `AAPL,slot-name` (Internal iGPU Indentifier)
+- `enable-hdmi20` (Enable 4K monitors and HDR content)
+- `framebuffer-unifiedmem` (Increase VRAM from 1536 MB to 2048 MB)
+- `framebuffer-patch-enable` (Enable framebuffer patches)
+- `model` (Name Showed in *About This Mac*)
+- `layout-id` (Sets the audio port to 3)
+
+### Delete
+Not needed
 
 ## Kernel
 ### Add
