@@ -50,6 +50,7 @@ Tested version: 0.6.4
 - Mojave: `sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`
 - High Sierra: `sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`
 
+![Terminal](Images/Guide/BootableUSB.png)
 
 ### From Windows:
 
@@ -80,7 +81,7 @@ Not needed in this build
 
 ## Booter
 ### Quirks
-Enabled:
+**Enabled:**
 1. `AvoidRuntimeDefrag`
 2. `EnableSafeModeSlide`
 3. `ProvideCustomSlide`
@@ -129,83 +130,149 @@ Not needed
 ## Kernel
 ### Add
 **ORDER MATTER!** Think about which kexts should load before which.
-1. [Lilu](https://github.com/acidanthera/lilu/releases) (Essential)
-2. [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) (Second always)
+1. [Lilu](https://github.com/acidanthera/lilu/releases) (First)
+2. [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) (Second)
    - SMCProcessor
    - SMCSuperIO
    - SMCLightSensor (maybe not)
    - SMCBatteryManager
 3. [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases) (Graphics)
-4. [AppleALC](https://github.com/acidanthera/AppleALC/releases) (Audio)
-5. [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases) (Trackpad Support)
+4. [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2/releases) (PS/2 keyboard)
+5. [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) (LAN internet)
+6. [AppleALC](https://github.com/acidanthera/AppleALC/releases) (Audio)
+7. [VoodooI2C](https://github.com/VoodooI2C/VoodooI2C/releases) (Trackpad Support)
    - VoodooI2CHID
-6. [VoodooPS2Controller](https://github.com/acidanthera/VoodooPS2/releases) (PS/2 keyboard)
-7. [RealtekRTL8111](https://github.com/Mieze/RTL8111_driver_for_OS_X/releases) (LAN internet)
+
+### Block
+Ignore
+
+### Emulate
+Ignore
+
+### Force
+We don't need to force any kext to load, so ignore
+
+### Patch
+Ignore
 
 ### Quirks
-1. `AppleCpuPmCfgLock` enabled (maybe not)
-2. `AppleXcpmCfgLock` enabled
-3. `DisableIoMapper` **enabled** (Disable VT-d)
-4. `ThirdPartyDrives` **enabled** (TRIM for SSD)
-5. `XhciPortLimit` **disabled** (no need)
+**Enabled:**
+1. `AppleXcpmCfgLock` (We don't have options to unlock de CFG-Lock on the BIOS)
+2. `DisableIoMapper` (If you have VT-d enabled on the BIOS (Prefered))
+3. `DisableLinkeditJettison`
+4. `PanicNoKextDump`
+5. `PowerTimeoutKernelPanic`
+6. `XhciPortLimit` (Needed for USBs type XHCI)
+
+### Scheme
+Ignore, leave that by default.
 
 ## Misc
 ### Boot
-1. `ConsoleBehaviourOs` as `ForceGraphics`
-2. `ConsoleBehaviourUi` as `ForceText`
-3. `HibernateMode` as `None`
-4. `Resolution` as `1920x1080` (Or your actual screen size)
-5. `ShowPicker` and `UsePicker` enabled
+Leave Default
+
+### Debug
+Leave Default if you dont want debug information.
+
+### Entries
+Ignore
 
 ### Security
-1. `AllowNvramReset` enabled (If you want to)
-2. `ExposeSensitiveData` as `3` or `4`
+**Enabled:**
+1. `AllowNvramReset` (For RESET the NVRAM on picker selector)
+2. `AllowSetDefault` (Default disk for multiboot)
+3. `BlacklistAppleUpdate` (Stop reciving some sensitive updates)
+- `ScanPolicy` 0
+- `SecureBootModel` Default
+- `Vault` Optional
+
+### Tools
+Remove from `EFI/OC/Tools` everything
+
 
 ## NVRAM
 ### Add
-1. `7C436110-AB2A-4BBB-A880-FE41995C9F82`
-   1. `boot-args` containing:
-      1. `darkwake=0` (Sleep/wake)
-      2. `-lilubetaall -vsmcbeta -alcbeta -wegbeta` (If you are on a newer beta)
-      3. `-v debug=0x100 keepsyms=1` (Debugging, optional)
-      4. `-no_compat_check` (In case OS doesn't support your machine)
-      5. `-igfxmlr enable-dpcd-max-link-rate-fix` (Read WhateverGreen README)
-   2. `LegacyEnable` enabled (Emulating NVRAM)
+| 7C436110-AB2A-4BBB-A880-FE41995C9F82 | Dictionary | Keys / Values |
+|:--- |:---:|:--- |
+| boot-args  | String | -v keepsyms=1 debug=0x100 alcid=3 -wegnoegpu -igfxnohdmi agdpmod=vit9696 |
+| run-efi-updater | String | No |
+| csr-active-config | DATA | 00000000 |
+| prev-lang:kbd | String | en-US:0 |   
+
+**What does each thing:**
+- `boot-args` (Boot Arguments)
+   - `-v keepsyms=1 debug=0x100` (Debuging)
+   - `alcid=3` (Sets de audio to port 3)
+   - `-wegnoegpu` (Disable dGPU GTX 1050 Ti)
+   - `-igfxnohdmi` ()
+   - `agdpmod=vit9696` (Disable board-id checker **ESSENTIAL FOR HDMI OUTPUT**)
+- `run-efi-updater` (Disable macOS updates to EFI)
+- `csr-active-config` (SIP configuration (Enabled), For more: [Disabling SIP](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/extended/post-issues.html#disabling-sip))
+- `prev-lang:kbd` (Sets custom language, For more: [AppleKeyboardLayouts.txt(opens new window)](https://github.com/acidanthera/OpenCorePkg/blob/master/Utilities/AppleKeyboardLayouts/AppleKeyboardLayouts.txt)
+
+### Delete
+Ignore
+
+### LegacySchema
+Ignore, we have native NVRAM
+
+### WriteFlash `Enable`
+
 
 ## PlatformInfo
-1. `Automatic` **enabled**
-2. `Update*` options **enabled**
+### Automatic `enabled`
 
 ### Generic
-This is where you put SMBIOS data, make sure you provide the following:
-1. `MLB`
-2. `ROM` (MAC address)
-3. `SpoofVendor` **enabled**
-4. `SystemProductName` as `MacBookPro15,2` or similar
-5. `SystemSerialNumber`
-6. `SystemUUID`
+Download [GenSMBIOS (opens new window)](https://github.com/corpnewt/GenSMBIOS), and open the *GenSMBIOS.command* with *Right-Click > Open*, follow the intructions on the Terminal Window.
+
+| Generic | Dictionary | Keys / Values |
+|:--- |:---:|:--- |
+| AdviseWindows  | Boolean | False |
+| SystemMemoryStatus | String | Auto |
+| MLB | String | *Your own with GenSMBIOS* |
+| ProcessorType | Number | 0 |
+| ROM | DATA | *Your own with GenSMBIOS* |
+| SpoofVendor | Boolean | True |
+| SystemProductName | String | MacBookPro15,3 |
+| SystemSerialNumber | String | *Your own with GenSMBIOS* |
+| SystemUUID | String | *Your own with GenSMBIOS* |
+
 **These values are masked from the provided config file, make sure you enter your own before testing!**
 
+### UpdateDataHub `Boolean` `Enable`
+### UpdateNVRAM `Boolean` `Enable`
+### UpdateSMBIOS `Boolean` `Enable`
+### UpdateSMBIOSMode `String` `Create`
+
+
 ## UEFI
-1. `ConnectDrivers` **enabled**
+### ConnectDrivers `Boolean` `enabled`
+
+### APFS
+Leave everything default
+
+### Audio
+For now leave everything default
 
 ### Drivers (must-have)
-1. `UsbKbDxe.efi`
-2. `VboxHfs.efi`
-3. `ApfsDriverLoader.efi`
-4. `FwRuntimeServices.efi` (UEFI + AptioMemoryFix)
-5. `VirtualSMC.efi`
-6. `NvmExpressDxe.efi` (NVMe SSD)
-7. `XhciDxe.efi` (Peripherals)
+1. `OpenRuntime.efi`
+2. `HFsPlus.efi`
 
 ### Input
-1. `KeySupport` disabled (already use `UsbKbDxe.efi`)
+Ignore
 
-### Protocols
-1. `ConsoleControl` enabled
+### Output
+Ignore
+
+### ProtocolsOverride
+Ignore
 
 ### Quirks
-1. `ClearScreenOnModeSwitch` enabled
-2. `ProvideConsoleGop` enabled
-3. `RequestBootVarRouting` enabled
-4. `SanitiseClearScreen` enabled
+**Enabled:**
+1. `DeduplicateBootOrder`
+2. `ReleaseUsbOwnership` (Mainly for USB fixes)
+3. `RequestBootVarRouting` (Redirects some Variables for macOS)
+
+
+#BenchMarks:
+![Cinebench R23]()
