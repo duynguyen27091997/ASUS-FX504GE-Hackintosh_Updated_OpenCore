@@ -23,13 +23,13 @@ Tested version: 0.6.4
 - [x] **USB:** All internal and external ports (Thanks to SSDT-EC-USBX-LAPTOP.aml)
 - [x] **Ethernet:** Realtek RTL8111 (Thanks to RealtekRTL8111.kext
 - [x] **Trackpad:** (Working thanks to VoodooI2C.kext, VoodooI2CHID.kext and SSDT-XOSI.aml)
-- [x] **Shutdown:**
-- [x] **Restart:**
-- [x] **Sleep/Wake:** (ON PROCESS)
+- [x] **HDMI:** Works almost perfect. 
+- [x] **Shutdown:** Yes
+- [x] **Restart:** Yes
+- [x] **Sleep/Wake:** Yes
 
 ### Not working
 - dGPU (Any support in Mojave and up)
-- HDMI, i can't find a way to make it work...
 
 
 
