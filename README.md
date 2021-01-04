@@ -276,3 +276,7 @@ Ignore
 
 #BenchMarks:
 ![Cinebench R23]()
+
+###GeekBench 5:
+![GeekBench5_Score]()
+https://browser.geekbench.com/v5/cpu/5707123
