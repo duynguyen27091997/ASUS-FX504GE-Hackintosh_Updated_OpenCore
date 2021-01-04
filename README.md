@@ -1,4 +1,5 @@
 Tested version: 0.6.4
+OpenCore 0.6.5 its on work...
 
 ## Specs:
 | Component | Name |
