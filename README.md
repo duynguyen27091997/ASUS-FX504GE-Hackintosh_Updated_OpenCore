@@ -20,7 +20,8 @@ OpenCore 0.6.5 its on work...
 
 ### Working
 - [x] **Tested with macOS Mojave 10.14.4, Catalina 10.15.6 and Big Sur 11.1**
-- [x] **Wifi/Bluetooth:** (Thanks to itlwm.kext)
+- [x] **Wifi** (Thanks to [itlwm.kext](https://github.com/OpenIntelWireless/itlwm/releases) and after installing the OS with app [HeliPort.app](https://github.com/OpenIntelWireless/HeliPort/releases))
+- [x] **Bluetooth:** (Thanks to [IntelBluetoothFirmware.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases))
 - [x] **Audio:** Realtek ALC255 (Thanks to AppleALC.kext with layout-id=3 setted in Device Properties)
 - [x] **USB:** All internal and external ports (Thanks to SSDT-EC-USBX-LAPTOP.aml)
 - [x] **Ethernet:** Realtek RTL8111 (Thanks to RealtekRTL8111.kext
@@ -31,7 +32,8 @@ OpenCore 0.6.5 its on work...
 - [x] **Sleep/Wake:** Yes
 
 ### Not working
-- dGPU (Any support in Mojave and up)
+- dGPU (Any support in Mojave and up).
+- Continuity Features (not working for now, waiting on https://openintelwireless.github.io/).
 
 
 
@@ -276,9 +278,19 @@ Ignore
 3. `RequestBootVarRouting` (Redirects some Variables for macOS)
 
 
+#Post Install (Important!!)
+Open Terminal.app and run those commands:
+```bash
+sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist
+sudo rm /Library/Preferences/SystemConfiguration/preferences.plist
+```
+
+
 #BenchMarks:
-![Cinebench R23]()
+###Cinebench R23:
+![Cinebench R23](/Images/Benchmarks/Cinebench_R23.png)
 
 ###GeekBench 5:
-![GeekBench5_Score]()
+![GeekBench 5_CPU Score](/Images/Benchmarks/GeekBench5_CPU.png)
+![GeekBench 5_GPU Score](/Images/Benchmarks/GeekBench5_GPU.png)
 https://browser.geekbench.com/v5/cpu/5707123
