@@ -278,7 +278,7 @@ Ignore
 3. `RequestBootVarRouting` (Redirects some Variables for macOS)
 
 
-#Post Install (Important!!)
+# Post Install (Important!!)
 Open Terminal.app and run those commands:
 ```bash
 sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist
@@ -286,11 +286,11 @@ sudo rm /Library/Preferences/SystemConfiguration/preferences.plist
 ```
 
 
-#BenchMarks:
-###Cinebench R23:
+# BenchMarks:
+### Cinebench R23:
 ![Cinebench R23](/Images/Benchmarks/Cinebench_R23.png)
 
-###GeekBench 5:
+### GeekBench 5:
 ![GeekBench 5_CPU Score](/Images/Benchmarks/GeekBench5_CPU.png)
 ![GeekBench 5_GPU Score](/Images/Benchmarks/GeekBench5_GPU.png)
 https://browser.geekbench.com/v5/cpu/5707123
