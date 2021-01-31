@@ -110,7 +110,7 @@ Not needed in this build
 | framebuffer-con1-index | DATA | 01000000 |
 | framebuffer-con1-pipe | DATA | 12000000 |
 | framebuffer-con1-preferred-lspcon-mode | DATA | 01000000 |
-| framebuffer-unifiedmem | DATA | 00000080 |
+| framebuffer-unifiedmem | DATA | 000080BE |
 | framebuffer-con1-type | DATA | 00080000 |
 | model | String | Intel UHD 630 |
 
@@ -123,7 +123,7 @@ Not needed in this build
 - `device-id` (Fake id)
 - `AAPL,slot-name` (Internal iGPU Indentifier)
 - `enable-hdmi20` (Enable 4K monitors and HDR content)
-- `framebuffer-unifiedmem` (Increase VRAM from 1536 MB to 2048 MB)
+- `framebuffer-unifiedmem` (Increase VRAM from 1536 MB to 3048 MB)
 - `framebuffer-patch-enable` (Enable framebuffer patches)
 - `model` (Name Showed in *About This Mac*)
 - `layout-id` (Sets the audio port to 3)
