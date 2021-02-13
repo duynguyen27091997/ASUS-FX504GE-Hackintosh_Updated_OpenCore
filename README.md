@@ -1,6 +1,6 @@
-Tested version: 0.6.4
+WORKING PERFECT ONOPENCORE 0.6.4
 
-OpenCore 0.6.5 its on work...
+OpenCore 0.6.6 its on plan, but I'm very busy with studies
 
 ## Specs:
 | Component | Name |
@@ -10,6 +10,8 @@ OpenCore 0.6.5 its on work...
 | RAM: | 16GB **SK Hyinix** HMA82GS6CJR8N-VK 2666Mhz |
 | iGPU: | Intel UHD 630 (Mobile) |
 | dGPU: | NVIDIA GeForce GTX 1050 Ti (DISABLED) |
+| SSD: | Samsung 970 EVO Plus |
+| HDD: | HGST HTS721010A9E630 |
 | Wifi/BT: | Intel(R) Wireless-AC 9560 160MHz (Type CNVi) |
 | Audio: | Realtek ALC255 |
 | Ethernet: | Realtek RTL8111 |
