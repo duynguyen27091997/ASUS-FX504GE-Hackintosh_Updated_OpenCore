@@ -63,6 +63,10 @@ OpenCore 0.6.6 its on plan, but I'm very busy with studies, soo you would need t
 [**Dortania's Guide**](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/winblows-install.html)
 
 
+# BIOS Settings:
+- Make Sure you have [Latest BIOS v320](https://www.asus.com/supportonly/ASUS%20TUF%20GAMING%20FX504/HelpDesk_Download/)
+- After Updating the BIOS, stock configuration works, so don't worry about this part.
+
 
 
 # OPENCORE Config.plist
